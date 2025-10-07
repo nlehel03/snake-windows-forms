@@ -90,10 +90,22 @@ namespace snake_windows_forms
             {
                 string gameOverMsg = "GAME OVER";
                 string scoreMsg = $"Final Score: {model.score}";
+
                 var scoreFont = new Font("Courier New", 18, FontStyle.Bold);
                 var gameOverFont = new Font("Courier New", 24, FontStyle.Bold);
-                var size = e.Graphics.MeasureString(gameOverMsg, gameOverFont);
-                e.Graphics.DrawString(gameOverMsg, gameOverFont, Brushes.Green, (ClientSize.Width - size.Width)/2, (ClientSize.Height - size.Height)/2);
+
+                var gameOverSize = e.Graphics.MeasureString(gameOverMsg, gameOverFont);
+                var scoreSize = e.Graphics.MeasureString(scoreMsg, scoreFont);
+
+                float gameOverX = (ClientSize.Width - gameOverSize.Width) / 2;
+                float gameOverY = (ClientSize.Height - gameOverSize.Height) / 2;
+
+                float scoreX = (ClientSize.Width - scoreSize.Width) / 2;
+                float scoreY = gameOverY + gameOverSize.Height + 10; 
+
+                e.Graphics.DrawString(gameOverMsg, gameOverFont, Brushes.Green, gameOverX, gameOverY);
+                e.Graphics.DrawString(scoreMsg, scoreFont, Brushes.Green, scoreX, scoreY);
+            
             }
             //Pause
             if(isPaused)
