@@ -29,22 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            scoresLabel = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
             SuspendLayout();
-            // 
-            // scoresLabel
-            // 
-            scoresLabel.AutoSize = true;
-            scoresLabel.BackColor = Color.Transparent;
-            scoresLabel.Font = new Font("Courier New", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 238);
-            scoresLabel.ForeColor = Color.FromArgb(0, 192, 0);
-            scoresLabel.Location = new Point(12, 9);
-            scoresLabel.Name = "scoresLabel";
-            scoresLabel.Size = new Size(76, 22);
-            scoresLabel.TabIndex = 1;
-            scoresLabel.Text = "Score:";
-            scoresLabel.Click += scoresLabel_Click;
             // 
             // timer1
             // 
@@ -56,15 +42,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(504, 504);
-            Controls.Add(scoresLabel);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-        private Label scoresLabel;
         private System.Windows.Forms.Timer timer1;
     }
 }

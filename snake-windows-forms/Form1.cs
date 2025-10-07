@@ -2,6 +2,7 @@ using snake_windows_forms.Models;
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Windows.Forms;
 
 
@@ -11,6 +12,7 @@ namespace snake_windows_forms
     {
         private GameState model;
         private const int CellSize = 20;
+        private bool isPaused = false;
         public Form1()
         {
             InitializeComponent();
@@ -19,6 +21,7 @@ namespace snake_windows_forms
             this.DoubleBuffered = true;
             this.KeyDown += Form1_KeyDown;
             timer1.Start();
+            
         }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -28,6 +31,18 @@ namespace snake_windows_forms
                 case Keys.Down: model.snake.direction = Direction.Down; break;
                 case Keys.Left: model.snake.direction = Direction.Left; break;
                 case Keys.Right: model.snake.direction = Direction.Right; break;
+                case Keys.P or Keys.Escape:
+                    isPaused = !isPaused;
+                    if (isPaused)
+                    {
+                        timer1.Stop();
+                    }
+                    else
+                    {
+                        timer1.Start();
+                    }
+                    this.Invalidate(); 
+                    break;
             }
         }
 
@@ -74,11 +89,25 @@ namespace snake_windows_forms
             if (model.isGameOver)
             {
                 string msg = "GAME OVER";
-                var font = new Font("Arial", 24, FontStyle.Bold);
+                var font = new Font("Courier New", 24, FontStyle.Bold);
                 var size = e.Graphics.MeasureString(msg, font);
-                e.Graphics.DrawString(msg, font, Brushes.White,
-                                      ClientSize.Width - size.Width,
-                                      ClientSize.Height - size.Height);
+                e.Graphics.DrawString(msg, font, Brushes.Green, (ClientSize.Width - size.Width)/2, (ClientSize.Height - size.Height)/2);
+            }
+            if(isPaused)
+            {
+                string pauseMsg = "PAUSED";
+                var font = new Font("Courier New", 24, FontStyle.Bold);
+                var size = e.Graphics.MeasureString(pauseMsg, font);
+
+                int menuWidth = (int)size.Width + 60;
+                int menuHeight = (int)size.Height + 40;
+                int menuX = (ClientSize.Width - menuWidth) / 2;
+                int menuY = (ClientSize.Height - menuHeight) / 2;
+
+                e.Graphics.FillRectangle(Brushes.Black, menuX, menuY, menuWidth, menuHeight);
+                e.Graphics.DrawRectangle(Pens.Green, menuX, menuY, menuWidth, menuHeight);
+
+                e.Graphics.DrawString(pauseMsg, font, Brushes.Green, menuX + (menuWidth - size.Width) / 2, menuY + (menuHeight - size.Height) / 2);
             }
 
         }
