@@ -88,11 +88,14 @@ namespace snake_windows_forms
             // Game Over
             if (model.isGameOver)
             {
-                string msg = "GAME OVER";
-                var font = new Font("Courier New", 24, FontStyle.Bold);
-                var size = e.Graphics.MeasureString(msg, font);
-                e.Graphics.DrawString(msg, font, Brushes.Green, (ClientSize.Width - size.Width)/2, (ClientSize.Height - size.Height)/2);
+                string gameOverMsg = "GAME OVER";
+                string scoreMsg = $"Final Score: {model.score}";
+                var scoreFont = new Font("Courier New", 18, FontStyle.Bold);
+                var gameOverFont = new Font("Courier New", 24, FontStyle.Bold);
+                var size = e.Graphics.MeasureString(gameOverMsg, gameOverFont);
+                e.Graphics.DrawString(gameOverMsg, gameOverFont, Brushes.Green, (ClientSize.Width - size.Width)/2, (ClientSize.Height - size.Height)/2);
             }
+            //Pause
             if(isPaused)
             {
                 string pauseMsg = "PAUSED";
