@@ -1,4 +1,5 @@
 using snake_windows_forms.Models;
+using snake_windows_forms.View;
 
 namespace snake_windows_forms
 {
@@ -14,7 +15,7 @@ namespace snake_windows_forms
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             // Alkalmazás indítása
-            Application.Run(new Form1());
+            Application.Run(new MainMenuView());
         }
     }
 }

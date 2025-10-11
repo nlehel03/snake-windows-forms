@@ -6,17 +6,18 @@ using System.Drawing.Text;
 using System.Windows.Forms;
 
 
-namespace snake_windows_forms
+namespace snake_windows_forms.View
 {
-    public partial class Form1 : Form
+    public partial class GameView : Form
     {
         private GameState model;
-        private const int CellSize = 20;
+        private int CellSize;
         private bool isPaused = false;
-        public Form1()
+        public GameView(int c, int n)
         {
             InitializeComponent();
-            model = new GameState(25);
+            CellSize = c;
+            model = new GameState(n);
             this.ClientSize = new Size(model.n * CellSize, model.n * CellSize);
             this.DoubleBuffered = true;
             this.KeyDown += Form1_KeyDown;
@@ -97,16 +98,42 @@ namespace snake_windows_forms
                 var gameOverSize = e.Graphics.MeasureString(gameOverMsg, gameOverFont);
                 var scoreSize = e.Graphics.MeasureString(scoreMsg, scoreFont);
 
-                float gameOverX = (ClientSize.Width - gameOverSize.Width) / 2;
-                float gameOverY = (ClientSize.Height - gameOverSize.Height) / 2;
+                float gap = 10f;
+                float padding = 14f;
 
-                float scoreX = (ClientSize.Width - scoreSize.Width) / 2;
-                float scoreY = gameOverY + gameOverSize.Height + 10; 
+                float containerWidth = Math.Max(gameOverSize.Width, scoreSize.Width) + padding * 2;
+                float containerHeight = gameOverSize.Height + scoreSize.Height + gap + padding * 2;
 
+                float containerX = (ClientSize.Width - containerWidth) / 2f;
+                float containerY = (ClientSize.Height - containerHeight) / 2f;
+
+                // zöld keret a Game Over + Final Score köré
+                e.Graphics.FillRectangle(Brushes.Black, containerX, containerY, containerWidth, containerHeight);
+                e.Graphics.DrawRectangle(Pens.Green, containerX, containerY, containerWidth, containerHeight);
+
+                // GAME OVER középre a konténeren belül (felsõ rész)
+                float gameOverX = containerX + (containerWidth - gameOverSize.Width) / 2f;
+                float gameOverY = containerY + padding;
                 e.Graphics.DrawString(gameOverMsg, gameOverFont, Brushes.Green, gameOverX, gameOverY);
+
+                // Final Score alatta
+                float scoreX = containerX + (containerWidth - scoreSize.Width) / 2f;
+                float scoreY = gameOverY + gameOverSize.Height + gap;
                 e.Graphics.DrawString(scoreMsg, scoreFont, Brushes.Green, scoreX, scoreY);
-            
-            }
+
+
+
+
+            //float gameOverX = (ClientSize.Width - gameOverSize.Width) / 2;
+            //float gameOverY = (ClientSize.Height - gameOverSize.Height) / 2;
+
+            //float scoreX = (ClientSize.Width - scoreSize.Width) / 2;
+            //float scoreY = gameOverY + gameOverSize.Height + 10; 
+
+            //e.Graphics.DrawString(gameOverMsg, gameOverFont, Brushes.Green, gameOverX, gameOverY);
+            //e.Graphics.DrawString(scoreMsg, scoreFont, Brushes.Green, scoreX, scoreY);
+
+        }
             //Pause
             if(isPaused)
             {
@@ -114,15 +141,15 @@ namespace snake_windows_forms
                 var font = new Font("Courier New", 24, FontStyle.Bold);
                 var size = e.Graphics.MeasureString(pauseMsg, font);
 
-                int menuWidth = (int)size.Width + 60;
-                int menuHeight = (int)size.Height + 40;
-                int menuX = (ClientSize.Width - menuWidth) / 2;
-                int menuY = (ClientSize.Height - menuHeight) / 2;
+                int pauseWidth = (int)size.Width + 60;
+                int pauseHeight = (int)size.Height + 40;
+                int pauseX = (ClientSize.Width - pauseWidth) / 2;
+                int pauseY = (ClientSize.Height - pauseHeight) / 2;
 
-                e.Graphics.FillRectangle(Brushes.Black, menuX, menuY, menuWidth, menuHeight);
-                e.Graphics.DrawRectangle(Pens.Green, menuX, menuY, menuWidth, menuHeight);
+                e.Graphics.FillRectangle(Brushes.Black, pauseX, pauseY, pauseWidth, pauseHeight);
+                e.Graphics.DrawRectangle(Pens.Green, pauseX, pauseY, pauseWidth, pauseHeight);
 
-                e.Graphics.DrawString(pauseMsg, font, Brushes.Green, menuX + (menuWidth - size.Width) / 2, menuY + (menuHeight - size.Height) / 2);
+                e.Graphics.DrawString(pauseMsg, font, Brushes.Green, pauseX + (pauseWidth - size.Width) / 2, pauseY + (pauseHeight - size.Height) / 2);
             }
 
         }

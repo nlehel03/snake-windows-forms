@@ -1,6 +1,6 @@
-﻿namespace snake_windows_forms
+﻿namespace snake_windows_forms.View
 {
-    partial class Form1
+    partial class GameView
     {
         /// <summary>
         ///  Required designer variable.
@@ -36,14 +36,15 @@
             // 
             timer1.Tick += timer1_Tick;
             // 
-            // Form1
+            // GameView
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(504, 504);
-            Name = "Form1";
-            Text = "Form1";
+            ClientSize = new Size(576, 672);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "GameView";
+            Text = "Snake";
             ResumeLayout(false);
         }
 
