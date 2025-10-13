@@ -1,4 +1,6 @@
-﻿using System;
+﻿using snake_windows_forms.Models;
+using snake_windows_forms.Persistence;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,12 +17,15 @@ namespace snake_windows_forms.View
     {
         public int c;
         public int n;
+        public MapSize mapSize;
+        public FileManagement fm;
         public ChooseView()
         {
             InitializeComponent();
             mediumMapButton.Click += mediumMapButton_Click;
             smallMapButton.Click += smallMapButton_Click;
             largeMapButton.Click += largeMapButton_Click;
+            fm = new FileManagement();
         }
 
    
@@ -32,9 +37,9 @@ namespace snake_windows_forms.View
         private void smallMapButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            c = 40;
-            n = 13;
-            using (var game = new GameView(c, n))
+            mapSize = fm.loadMapSize(0);
+            
+            using (var game = new GameView(mapSize.cellSize,mapSize.n))
             {
                 game.StartPosition = FormStartPosition.Manual;
                 game.Location = this.Location;
@@ -47,9 +52,8 @@ namespace snake_windows_forms.View
         private void mediumMapButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            c = 20;
-            n = 25;
-            using (var game = new GameView(c, n))
+            mapSize = fm.loadMapSize(1);
+            using (var game = new GameView(mapSize.cellSize, mapSize.n))
             {
                 game.StartPosition = FormStartPosition.Manual;
                 game.Location = this.Location;
@@ -62,9 +66,8 @@ namespace snake_windows_forms.View
         private void largeMapButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            c = 10;
-            n = 50;
-            using (var game = new GameView(c, n))
+            mapSize = fm.loadMapSize(2);
+            using (var game = new GameView(mapSize.cellSize, mapSize.n))
             {
                 game.StartPosition = FormStartPosition.Manual;
                 game.Location = this.Location;
