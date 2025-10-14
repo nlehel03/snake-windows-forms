@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
-using snake_windows_forms.View;
 
 namespace snake_windows_forms.Models
 {
     public class GameState
     {
         public int n { get; }
+        private readonly Random r = new Random();
+
         public Snake snake { get; }
         public Food food { get; private set; }
         public int score { get; private set; }
         public bool isGameOver { get; private set; }
-        Random r = new Random();
+
+        // Csak olvasható felület a View-nak
+        public IReadOnlyList<Point> SnakeSegments => snake.body;
 
         public GameState(int n)
         {
@@ -27,16 +27,21 @@ namespace snake_windows_forms.Models
             isGameOver = false;
         }
 
+        public void SetDirection(Direction d) => snake.direction = d;
+
         public void Update()
         {
             if (isGameOver) return;
+
             bool grow = snake.body[0].Equals(food.position);
             snake.Move(grow);
+
             if (grow)
             {
-                score++;
+                score++;    
                 food.Respawn(n, snake.body);
             }
+
             if (snake.IsCollisionWithSelf() || IsCollisionWithWall())
             {
                 isGameOver = true;
@@ -48,8 +53,5 @@ namespace snake_windows_forms.Models
             Point head = snake.body[0];
             return head.X < 0 || head.X >= n || head.Y < 0 || head.Y >= n;
         }
-
-
     }
-
 }

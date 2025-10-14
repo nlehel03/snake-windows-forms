@@ -98,7 +98,6 @@ namespace snake_windows_forms.View
             }
             else
             {
-                // Page up/down kattintás
                 if (e.Y < thumbTop) Value = Math.Max(0, Value - LargeChange);
                 else if (e.Y > thumbTop + thumbHeight) Value = Math.Min(Maximum, Value + LargeChange);
             }

@@ -25,7 +25,6 @@ namespace snake_windows_forms.View
             SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
             ItemHeight = (int)(Font.Height * 1.5f);
 
-            // Egyedi zöld görgetősáv
             _scroll.Dock = DockStyle.Right;
             _scroll.Visible = false;
             _scroll.ValueChanged += (s, e) =>
@@ -40,7 +39,6 @@ namespace snake_windows_forms.View
             _scroll.BringToFront();
         }
 
-        // Távolítsuk el a natív függőleges sávot
         protected override CreateParams CreateParams
         {
             get
@@ -60,7 +58,6 @@ namespace snake_windows_forms.View
 
         protected override void WndProc(ref Message m)
         {
-            // Figyeljük az elemműveleteket, hogy frissítsük a sávot
             const int LB_ADDSTRING = 0x0180;
             const int LB_INSERTSTRING = 0x0181;
             const int LB_DELETESTRING = 0x0182;
@@ -77,7 +74,6 @@ namespace snake_windows_forms.View
 
         protected override void OnDrawItem(DrawItemEventArgs e)
         {
-            // Üres rész kitöltése
             if (e.Index < 0 || e.Index >= Items.Count)
             {
                 using var bg = new SolidBrush(BoxBackground);
@@ -93,7 +89,6 @@ namespace snake_windows_forms.View
             using (var b = new SolidBrush(back))
                 e.Graphics.FillRectangle(b, bounds);
 
-            // Szöveg téglalapja: ne fusson be a saját scrollbar alá
             var textRect = new Rectangle(bounds.X + 4, bounds.Y, 
                 Math.Max(0, bounds.Width - 4 - (_scroll.Visible ? _scroll.Width : 0)), 
                 bounds.Height);
@@ -111,7 +106,6 @@ namespace snake_windows_forms.View
 
         protected override void OnMouseWheel(MouseEventArgs e)
         {
-            // Kézzel állítsuk a TopIndex-et (nincs natív sáv)
             int steps = e.Delta / SystemInformation.MouseWheelScrollDelta;
             if (steps != 0)
             {

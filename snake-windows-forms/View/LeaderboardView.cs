@@ -19,16 +19,19 @@ namespace snake_windows_forms.View
         public LeaderboardView()
         {
             InitializeComponent();
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
             try
             {
                 scoresList = fm.loadScores();
+                scoresListBox.Items.Clear();
                 foreach (var s in scoresList)
                     scoresListBox.Items.Add($"{s.name} {s.score}");
             }
-            catch
-            {
-                // Designer stabilitás: ne dobj tovább kivételt
-            }
+            catch { }
         }
 
         private void menuButton_Click(object sender, EventArgs e)
