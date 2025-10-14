@@ -10,7 +10,6 @@ namespace snake_windows_forms.Persistence
     public class FileManagement
     {
         List<MapSize> mapSizeList = new List<MapSize>();
-        Scores sc;
         public FileManagement() 
         {
             
@@ -31,14 +30,14 @@ namespace snake_windows_forms.Persistence
         {
             List<Scores> scoresList = new List<Scores>();
             StreamReader sr = new StreamReader("scores.txt");
-            sc = new Scores();
             while (!sr.EndOfStream)
             {
                 string line = sr.ReadLine();
                 string[] temp = line.Split(";");
-                sc.name = temp[0];
-                sc.score = int.Parse(temp[1]);
-                scoresList.Add(sc);
+                if (int.TryParse(temp[1], out int s))
+                {
+                    scoresList.Add(new Scores(temp[0], s)); 
+                }
             }
             sr.Close();
             return scoresList;
@@ -46,14 +45,12 @@ namespace snake_windows_forms.Persistence
         public void saveScore(int s,string n)
         {
             List<Scores> slist = loadScores();
-            sc.name = n;
-            sc.score = s;
-            slist.Add(sc);
-            slist.Sort();
+            slist.Add(new Scores(n,s));
+            slist = slist.OrderByDescending(x => x.score).ToList();
             StreamWriter sw = new StreamWriter("scores.txt");
             for(int i = 0; i< slist.Count; i++)
             {
-                sw.WriteLine(sc.name + ";" + sc.score);
+                sw.WriteLine(slist[i].name + ";" + slist[i].score);
             }
             sw.Flush();
             sw.Close();

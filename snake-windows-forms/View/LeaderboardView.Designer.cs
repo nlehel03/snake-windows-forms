@@ -30,6 +30,7 @@
         {
             label1 = new Label();
             scoresListBox = new GameListBox();
+            menuButton = new GameButton();
             SuspendLayout();
             // 
             // label1
@@ -55,12 +56,32 @@
             scoresListBox.ForeColor = Color.Lime;
             scoresListBox.FormattingEnabled = true;
             scoresListBox.ItemHeight = 28;
-            scoresListBox.Location = new Point(91, 178);
+            scoresListBox.Location = new Point(91, 163);
             scoresListBox.Name = "scoresListBox";
             scoresListBox.SelectionBackColor = Color.Green;
             scoresListBox.SelectionForeColor = Color.Black;
             scoresListBox.Size = new Size(337, 252);
             scoresListBox.TabIndex = 2;
+            // 
+            // menuButton
+            // 
+            menuButton.BackColor = Color.Black;
+            menuButton.BackgroundColor = Color.Black;
+            menuButton.BorderColor = Color.Green;
+            menuButton.BorderSize = 1;
+            menuButton.FlatAppearance.BorderSize = 0;
+            menuButton.FlatStyle = FlatStyle.Flat;
+            menuButton.Font = new Font("Courier New", 14F, FontStyle.Bold);
+            menuButton.ForeColor = Color.Green;
+            menuButton.Location = new Point(184, 421);
+            menuButton.Name = "menuButton";
+            menuButton.Size = new Size(153, 56);
+            menuButton.TabIndex = 3;
+            menuButton.Text = "Menu";
+            menuButton.TextColor = Color.Green;
+            menuButton.TextFont = new Font("Courier New", 14F, FontStyle.Bold);
+            menuButton.UseVisualStyleBackColor = false;
+            menuButton.Click += menuButton_Click;
             // 
             // LeaderboardView
             // 
@@ -68,6 +89,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(504, 504);
+            Controls.Add(menuButton);
             Controls.Add(scoresListBox);
             Controls.Add(label1);
             Margin = new Padding(3, 2, 3, 2);
@@ -80,5 +102,6 @@
         #endregion
         private Label label1;
         private GameListBox scoresListBox;
+        private GameButton menuButton;
     }
 }

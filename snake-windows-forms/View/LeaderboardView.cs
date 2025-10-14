@@ -15,14 +15,31 @@ namespace snake_windows_forms.View
     public partial class LeaderboardView : Form
     {
         public List<Scores> scoresList = new List<Scores>();
-        public FileManagement fm= new FileManagement();
+        public FileManagement fm = new FileManagement();
         public LeaderboardView()
         {
             InitializeComponent();
-            scoresList = fm.loadScores();
-            for(int i = 0; i < scoresList.Count; i++)
+            try
             {
-                scoresListBox.Items.Add(scoresList[i].name + " " + scoresList[i].score);
+                scoresList = fm.loadScores();
+                foreach (var s in scoresList)
+                    scoresListBox.Items.Add($"{s.name} {s.score}");
+            }
+            catch
+            {
+                // Designer stabilitás: ne dobj tovább kivételt
+            }
+        }
+
+        private void menuButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            using (var menu = new MainMenuView())
+            {
+                menu.StartPosition = FormStartPosition.Manual;
+                menu.Location = this.Location;
+                menu.Size = this.Size;
+                menu.ShowDialog(this);
             }
         }
     }
