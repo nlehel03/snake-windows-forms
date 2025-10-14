@@ -37,7 +37,7 @@ namespace snake_windows_forms.View
         public GameTextBox()
         {
             
-            Multiline = true;
+            Multiline = false;
 
             BorderStyle = BorderStyle.None; 
             BackColor = BackgroundColor;

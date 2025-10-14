@@ -74,7 +74,7 @@ namespace snake_windows_forms.View
                 game.Size = this.Size;
                 game.ShowDialog(this);
             }
-            ;
+            
         }
     }
 }
