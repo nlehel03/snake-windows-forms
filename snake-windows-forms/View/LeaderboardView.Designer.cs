@@ -28,37 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            label1 = new Label();
+            scoresListBox = new GameListBox();
             SuspendLayout();
             // 
-            // dataGridView1
+            // label1
             // 
-            dataGridView1.BackgroundColor = Color.Black;
-            dataGridView1.BorderStyle = BorderStyle.Fixed3D;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.GridColor = Color.Green;
-            dataGridView1.Location = new Point(140, 184);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(300, 188);
-            dataGridView1.TabIndex = 0;
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Courier New", 72F, FontStyle.Bold);
+            label1.ForeColor = Color.FromArgb(0, 192, 0);
+            label1.Location = new Point(91, 65);
+            label1.Name = "label1";
+            label1.Size = new Size(337, 110);
+            label1.TabIndex = 1;
+            label1.Text = "SNAKE";
+            // 
+            // scoresListBox
+            // 
+            scoresListBox.BackColor = Color.Black;
+            scoresListBox.BorderStyle = BorderStyle.None;
+            scoresListBox.BoxBackground = Color.Black;
+            scoresListBox.BoxForeColor = Color.Lime;
+            scoresListBox.DrawMode = DrawMode.OwnerDrawFixed;
+            scoresListBox.Font = new Font("Courier New", 12F, FontStyle.Bold);
+            scoresListBox.ForeColor = Color.Lime;
+            scoresListBox.FormattingEnabled = true;
+            scoresListBox.ItemHeight = 28;
+            scoresListBox.Location = new Point(91, 178);
+            scoresListBox.Name = "scoresListBox";
+            scoresListBox.SelectionBackColor = Color.Green;
+            scoresListBox.SelectionForeColor = Color.Black;
+            scoresListBox.Size = new Size(337, 252);
+            scoresListBox.TabIndex = 2;
             // 
             // LeaderboardView
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(576, 672);
-            Controls.Add(dataGridView1);
+            ClientSize = new Size(504, 504);
+            Controls.Add(scoresListBox);
+            Controls.Add(label1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "LeaderboardView";
             Text = "LeaderboardView";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private DataGridView dataGridView1;
+        private Label label1;
+        private GameListBox scoresListBox;
     }
 }

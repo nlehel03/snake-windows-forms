@@ -40,9 +40,9 @@
             logo.BackColor = Color.Transparent;
             logo.Font = new Font("Courier New", 72F, FontStyle.Bold, GraphicsUnit.Point, 238);
             logo.ForeColor = Color.Green;
-            logo.Location = new Point(75, 87);
+            logo.Location = new Point(91, 65);
             logo.Name = "logo";
-            logo.Size = new Size(418, 137);
+            logo.Size = new Size(337, 110);
             logo.TabIndex = 1;
             logo.Text = "SNAKE";
             logo.TextAlign = ContentAlignment.MiddleCenter;
@@ -57,9 +57,10 @@
             startGameButton.FlatStyle = FlatStyle.Flat;
             startGameButton.Font = new Font("Courier New", 14F, FontStyle.Bold);
             startGameButton.ForeColor = Color.Green;
-            startGameButton.Location = new Point(194, 257);
+            startGameButton.Location = new Point(183, 193);
+            startGameButton.Margin = new Padding(3, 2, 3, 2);
             startGameButton.Name = "startGameButton";
-            startGameButton.Size = new Size(175, 75);
+            startGameButton.Size = new Size(153, 56);
             startGameButton.TabIndex = 4;
             startGameButton.Text = "Start Game";
             startGameButton.TextColor = Color.Green;
@@ -76,9 +77,10 @@
             leaderBoardButton.FlatStyle = FlatStyle.Flat;
             leaderBoardButton.Font = new Font("Courier New", 14F, FontStyle.Bold);
             leaderBoardButton.ForeColor = Color.Green;
-            leaderBoardButton.Location = new Point(194, 396);
+            leaderBoardButton.Location = new Point(183, 297);
+            leaderBoardButton.Margin = new Padding(3, 2, 3, 2);
             leaderBoardButton.Name = "leaderBoardButton";
-            leaderBoardButton.Size = new Size(175, 76);
+            leaderBoardButton.Size = new Size(153, 57);
             leaderBoardButton.TabIndex = 5;
             leaderBoardButton.Text = "Leaderboard";
             leaderBoardButton.TextAlign = ContentAlignment.MiddleRight;
@@ -86,16 +88,18 @@
             leaderBoardButton.TextFont = new Font("Courier New", 14F, FontStyle.Bold);
             leaderBoardButton.TextImageRelation = TextImageRelation.TextBeforeImage;
             leaderBoardButton.UseVisualStyleBackColor = false;
+            leaderBoardButton.Click += leaderBoardButton_Click;
             // 
             // MainMenuView
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(576, 672);
+            ClientSize = new Size(504, 504);
             Controls.Add(leaderBoardButton);
             Controls.Add(startGameButton);
             Controls.Add(logo);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "MainMenuView";
             Text = "Snake";
             ResumeLayout(false);

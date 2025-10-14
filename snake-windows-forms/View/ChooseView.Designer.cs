@@ -32,7 +32,6 @@
             smallMapButton = new GameButton();
             mediumMapButton = new GameButton();
             largeMapButton = new GameButton();
-            label1 = new Label();
             label2 = new Label();
             SuspendLayout();
             // 
@@ -43,13 +42,12 @@
             logo.BackColor = Color.Transparent;
             logo.Font = new Font("Courier New", 72F, FontStyle.Bold, GraphicsUnit.Point, 238);
             logo.ForeColor = Color.Green;
-            logo.Location = new Point(75, 87);
+            logo.Location = new Point(91, 65);
             logo.Name = "logo";
-            logo.Size = new Size(418, 137);
+            logo.Size = new Size(337, 110);
             logo.TabIndex = 2;
             logo.Text = "SNAKE";
             logo.TextAlign = ContentAlignment.MiddleCenter;
-            
             // 
             // smallMapButton
             // 
@@ -61,9 +59,10 @@
             smallMapButton.FlatStyle = FlatStyle.Flat;
             smallMapButton.Font = new Font("Courier New", 14F, FontStyle.Bold);
             smallMapButton.ForeColor = Color.Green;
-            smallMapButton.Location = new Point(194, 257);
+            smallMapButton.Location = new Point(183, 193);
+            smallMapButton.Margin = new Padding(3, 2, 3, 2);
             smallMapButton.Name = "smallMapButton";
-            smallMapButton.Size = new Size(175, 75);
+            smallMapButton.Size = new Size(153, 56);
             smallMapButton.TabIndex = 5;
             smallMapButton.Text = "Small";
             smallMapButton.TextColor = Color.Green;
@@ -81,9 +80,10 @@
             mediumMapButton.FlatStyle = FlatStyle.Flat;
             mediumMapButton.Font = new Font("Courier New", 14F, FontStyle.Bold);
             mediumMapButton.ForeColor = Color.Green;
-            mediumMapButton.Location = new Point(194, 396);
+            mediumMapButton.Location = new Point(183, 297);
+            mediumMapButton.Margin = new Padding(3, 2, 3, 2);
             mediumMapButton.Name = "mediumMapButton";
-            mediumMapButton.Size = new Size(175, 76);
+            mediumMapButton.Size = new Size(153, 57);
             mediumMapButton.TabIndex = 6;
             mediumMapButton.Text = "Medium";
             mediumMapButton.TextAlign = ContentAlignment.MiddleRight;
@@ -103,9 +103,10 @@
             largeMapButton.FlatStyle = FlatStyle.Flat;
             largeMapButton.Font = new Font("Courier New", 14F, FontStyle.Bold);
             largeMapButton.ForeColor = Color.Green;
-            largeMapButton.Location = new Point(194, 535);
+            largeMapButton.Location = new Point(183, 401);
+            largeMapButton.Margin = new Padding(3, 2, 3, 2);
             largeMapButton.Name = "largeMapButton";
-            largeMapButton.Size = new Size(175, 76);
+            largeMapButton.Size = new Size(153, 57);
             largeMapButton.TabIndex = 7;
             largeMapButton.Text = "Large";
             largeMapButton.TextAlign = ContentAlignment.MiddleRight;
@@ -115,24 +116,15 @@
             largeMapButton.UseVisualStyleBackColor = false;
             largeMapButton.Click += largeMapButton_Click;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(202, 543);
-            label1.Name = "label1";
-            label1.Size = new Size(50, 20);
-            label1.TabIndex = 8;
-            label1.Text = "label1";
-            // 
             // label2
             // 
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 238);
             label2.ForeColor = Color.Green;
-            label2.Location = new Point(175, 211);
+            label2.Location = new Point(172, 158);
             label2.Name = "label2";
-            label2.Size = new Size(220, 28);
+            label2.Size = new Size(176, 21);
             label2.TabIndex = 9;
             label2.Text = "Choose the size of map!";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -140,16 +132,16 @@
             // 
             // ChooseView
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(576, 672);
+            ClientSize = new Size(504, 504);
             Controls.Add(label2);
-            Controls.Add(label1);
             Controls.Add(largeMapButton);
             Controls.Add(mediumMapButton);
             Controls.Add(smallMapButton);
             Controls.Add(logo);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "ChooseView";
             Text = "Snake";
             ResumeLayout(false);
@@ -162,7 +154,6 @@
         private GameButton smallMapButton;
         private GameButton mediumMapButton;
         private GameButton largeMapButton;
-        private Label label1;
         private Label label2;
     }
 }

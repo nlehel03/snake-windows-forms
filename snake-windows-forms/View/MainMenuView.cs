@@ -28,7 +28,19 @@ namespace snake_windows_forms.View
                 choose.Size = this.Size;
                 choose.ShowDialog(this);
             }
-            
+
+        }
+
+        private void leaderBoardButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            using (var lb = new LeaderboardView())
+            {
+                lb.StartPosition = FormStartPosition.Manual;
+                lb.Location = this.Location;
+                lb.Size = this.Size;
+                lb.ShowDialog(this);
+            }
         }
     }
 }
