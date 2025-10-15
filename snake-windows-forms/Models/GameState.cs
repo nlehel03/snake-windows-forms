@@ -38,7 +38,7 @@ namespace snake_windows_forms.Models
 
             if (grow)
             {
-                score++;    
+                score++;
                 food.Respawn(n, snake.body);
             }
 
