@@ -14,7 +14,7 @@ namespace snake_windows_forms.Models
         public int score { get; private set; }
         public bool isGameOver { get; private set; }
 
-        // Csak olvasható felület a View-nak
+        
         public IReadOnlyList<Point> SnakeSegments => snake.body;
 
         public GameState(int n)

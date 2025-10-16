@@ -28,12 +28,6 @@ namespace snake_windows_forms.View
             fm = new FileManagement();
         }
 
-   
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void smallMapButton_Click(object sender, EventArgs e)
         {
             this.Hide();

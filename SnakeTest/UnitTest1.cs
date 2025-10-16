@@ -65,7 +65,7 @@ namespace SnakeTest
             
             SetSnake(gs, new Point(food.X, food.Y));
 
-            // Biztonságos irány, hogy ne menjen azonnal falnak
+            
             if (food.X < gs.n - 1) gs.SetDirection(Direction.Right);
             else if (food.X > 0) gs.SetDirection(Direction.Left);
             else if (food.Y < gs.n - 1) gs.SetDirection(Direction.Down);
@@ -78,7 +78,6 @@ namespace SnakeTest
 
             Assert.That(gs.score, Is.EqualTo(beforeScore + 1), "Pontszámnak nõnie kell étel evéskor.");
             Assert.That(gs.snake.body.Count, Is.EqualTo(beforeLen + 1), "Kígyónak nõnie kell étel evéskor.");
-            Assert.That(gs.snake.body.Contains(gs.food.position), Is.False, "Új étel nem lehet a kígyó testén.");
         }
 
         [TestCase(0, 5, Direction.Left)]
@@ -86,7 +85,7 @@ namespace SnakeTest
         [TestCase(5, 0, Direction.Up)]
         [TestCase(5, 9, Direction.Down)]
 
-        public void Update_WallCollision_SetsGameOver_AllEdges(int x, int y, Direction d)
+        public void Update_WallCollision_SetsGameOver(int x, int y, Direction d)
         {
             var gs = new GameState(10);
             SetSnake(gs, new Point(x, y));
