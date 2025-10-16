@@ -1,6 +1,8 @@
+
 ﻿using snake_windows_forms.Models;
 using snake_windows_forms.Persistence;
 using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -45,5 +47,6 @@ namespace snake_windows_forms.View
                 menu.ShowDialog(this);
             }
         }
+        
     }
 }

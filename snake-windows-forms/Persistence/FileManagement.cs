@@ -44,6 +44,10 @@ namespace snake_windows_forms.Persistence
         }
         public void saveScore(int s,string n)
         {
+            if(n == "")
+            {
+                n = "Anonymous";
+            }
             List<Scores> slist = loadScores();
             slist.Add(new Scores(n,s));
             slist = slist.OrderByDescending(x => x.score).ToList();
